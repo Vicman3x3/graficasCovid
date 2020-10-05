@@ -11,10 +11,15 @@
             </div>
           </div>
           <input type="text"
-           placeholder="Datepicker"
+          name="dateInit"
+           placeholder="Fecha"
            class="form-control"
            bsDatepicker
-           [bsConfig]="{ isAnimated: true }">
+           [bsConfig]="{ isAnimated: true }"
+           [minDate]= "minCovDate"
+           [maxDate]= "dateEnd ? dateEnd : maxCovDate"
+           [(ngModel)]="dateInit"
+           (bsValueChange)= "loadData($event)">
         </div>
       </div>
       <!-- Fecha hasta -->
@@ -26,24 +31,27 @@
             </div>
           </div>
           <input type="text"
-           placeholder="Datepicker"
+          name="dateEnd"
+           placeholder="Fecha"
            class="form-control"
            bsDatepicker
-           [bsConfig]="{ isAnimated: true }">
+           [bsConfig]="{ isAnimated: true }"
+           [maxDate]= "maxCovDate"
+           [minDate]= "dateInit ? dateInit : minCovDate"
+           [(ngModel)]="dateEnd"
+           (bsValueChange)= "loadData($event)">
         </div>
       </div>
       <!-- Paises -->
 
-      {{country}}
-
-      <div class="col-md-4">
+            <div class="col-md-4">
         <div class="input-group">
           <div class="input-group-prepend">
             <div class="input-group-text">
               <i class="fas fa-globe-americas"></i>
             </div>
           </div>
-          <select class="form-control" name="country" [(ngModel)]="country">
+          <select class="form-control" name="country" [(ngModel)]="country" (change)= "loadData($event)">
             <option value="" [ngValue]="null" selected>
 Elige un pais
             </option>

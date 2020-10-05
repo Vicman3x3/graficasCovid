@@ -1,6 +1,7 @@
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { Observable } from 'rxjs';
+import { map, filter } from 'rxjs/operators';
 
 @Injectable({
   providedIn: 'root'
@@ -13,5 +14,14 @@ export class CovidService {
 
   public getAll(): Observable<any>{
     return this.httpClient.get<any>(this.covURL);
+  }
+
+  public fromCountry(country: string): Observable<any[]>{
+    return this.getAll().pipe(map(data => data[country]));
+  }
+
+  public twoDates(country: string, dateFrom: Date, dateTo: Date): Observable<any[]>{
+    return this.fromCountry(country)
+    .pipe(map(res => res.filter(val => new Date(val.date) >= dateFrom && new Date(val.date) <= dateTo )));
   }
 }

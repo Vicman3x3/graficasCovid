@@ -28,6 +28,7 @@ defineLocale('es', esLocale);
 // Charts
 import { ChartsModule } from 'ng2-charts';
 import { from } from 'rxjs';
+import { DatePipe } from '@angular/common';
 
 @NgModule({
   declarations: [
@@ -50,7 +51,7 @@ import { from } from 'rxjs';
     HttpClientModule,
     FormsModule
   ],
-  providers: [],
+  providers: [DatePipe],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
