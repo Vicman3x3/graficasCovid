@@ -33,6 +33,9 @@
         </div>
       </div>
       <!-- Paises -->
+
+      {{country}}
+
       <div class="col-md-4">
         <div class="input-group">
           <div class="input-group-prepend">
@@ -40,12 +43,13 @@
               <i class="fas fa-globe-americas"></i>
             </div>
           </div>
-          <select class="form-control">
-            <option value="">Opción A</option>
-            <option value="">Opción A</option>
-            <option value="">Opción A</option>
-            <option value="">Opción A</option>
-            <option value="">Opción A</option>
+          <select class="form-control" name="country" [(ngModel)]="country">
+            <option value="" [ngValue]="null" selected>
+Elige un pais
+            </option>
+            <option *ngFor="let country of countries" [ngValue]="country">
+{{country}}
+            </option>
           </select>
         </div>
       </div>

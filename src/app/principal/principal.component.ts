@@ -3,6 +3,7 @@ import { BsLocaleService } from 'ngx-bootstrap/datepicker';
 import { listLocales } from 'ngx-bootstrap/chronos';
 import { ChartDataSets, ChartOptions } from 'chart.js';
 import { Color, Label } from 'ng2-charts';
+import { CovidService } from '../services/covid.service';
 
 @Component({
   selector: 'app-principal',
@@ -12,17 +13,37 @@ import { Color, Label } from 'ng2-charts';
 export class PrincipalComponent implements OnInit {
 
   public lineChartData: ChartDataSets[] = [
-    { data: [65, 59, 80, 81, 56, 55, 40], label: 'Series A' },
+    { data: [], label: 'Confirmados' },
+    { data: [], label: 'Recuperados' },
+    { data: [], label: 'Activos' },
+    { data: [], label: 'Defunciones' },
   ];
-  public lineChartLabels: Label[] = ['January', 'February', 'March', 'April', 'May', 'June', 'July'];
+  public lineChartLabels: Label[] = [];
   public lineChartOptions = {
     responsive: true,
   };
   public lineChartColors: Color[] = [
     {
-      borderColor: 'black',
-      backgroundColor: 'rgba(255,0,0,0.3)',
+      borderColor: 'yellow',
+      backgroundColor: 'rgba(255,240,30,0.3)',
     },
+
+    {
+      borderColor: 'green',
+      backgroundColor: 'rgba(50,230,50,0.3)',
+    },
+
+    {
+      borderColor: 'red',
+      backgroundColor: 'rgba(255,30,30,0.3)',
+    },
+
+    {
+      borderColor: 'blue',
+      backgroundColor: 'rgba(30,40,250,0.3)',
+    }
+
+
   ];
   public lineChartLegend = true;
   public lineChartType = 'line';
@@ -30,11 +51,28 @@ export class PrincipalComponent implements OnInit {
 
   locale = 'es';
 
-  constructor(private localeService: BsLocaleService) {
+  countries: string[] = [];
+  country: string = null;
+
+  constructor(
+    private localeService: BsLocaleService,
+    private covidService: CovidService
+
+    ) {
     this.localeService.use(this.locale);
-   }
+  }
 
   ngOnInit(): void {
+    this.getCountries();
+  }
+
+  getCountries():void{
+    this.covidService.getAll().subscribe(
+      data => {
+        this.countries = Object.keys(data);
+
+      }
+    );
   }
 
 }

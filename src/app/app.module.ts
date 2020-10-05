@@ -12,6 +12,11 @@ import { PastelComponent } from './graficos/pastel/pastel.component';
 import { BarraComponent } from './graficos/barra/barra.component';
 import { DonaComponent } from './graficos/dona/dona.component';
 
+// servicios
+import { HttpClient, HttpClientModule } from '@angular/common/http';
+import { FormsModule } from '@angular/forms'
+import { CovidService } from './services/covid.service';
+
 
 // Datepcker
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
@@ -22,6 +27,7 @@ defineLocale('es', esLocale);
 
 // Charts
 import { ChartsModule } from 'ng2-charts';
+import { from } from 'rxjs';
 
 @NgModule({
   declarations: [
@@ -40,7 +46,9 @@ import { ChartsModule } from 'ng2-charts';
     AppRoutingModule,
     BrowserAnimationsModule,
     BsDatepickerModule.forRoot(),
-    ChartsModule
+    ChartsModule,
+    HttpClientModule,
+    FormsModule
   ],
   providers: [],
   bootstrap: [AppComponent]
