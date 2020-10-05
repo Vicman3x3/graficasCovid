@@ -8,6 +8,9 @@ import { SidebarComponent } from './sidebar/sidebar.component';
 import { PrincipalComponent } from './principal/principal.component';
 import { BottomComponent } from './bottom/bottom.component';
 import { FooterComponent } from './footer/footer.component';
+import { PastelComponent } from './graficos/pastel/pastel.component';
+import { BarraComponent } from './graficos/barra/barra.component';
+import { DonaComponent } from './graficos/dona/dona.component';
 
 @NgModule({
   declarations: [
@@ -16,7 +19,10 @@ import { FooterComponent } from './footer/footer.component';
     SidebarComponent,
     PrincipalComponent,
     BottomComponent,
-    FooterComponent
+    FooterComponent,
+    PastelComponent,
+    BarraComponent,
+    DonaComponent
   ],
   imports: [
     BrowserModule,
