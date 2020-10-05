@@ -1,4 +1,6 @@
 import { Component, OnInit } from '@angular/core';
+import { BsLocaleService } from 'ngx-bootstrap/datepicker';
+import { listLocales } from 'ngx-bootstrap/chronos';
 
 @Component({
   selector: 'app-principal',
@@ -7,7 +9,11 @@ import { Component, OnInit } from '@angular/core';
 })
 export class PrincipalComponent implements OnInit {
 
-  constructor() { }
+  locale = 'es';
+
+  constructor(private localeService: BsLocaleService) {
+    this.localeService.use(this.locale);
+   }
 
   ngOnInit(): void {
   }

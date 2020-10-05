@@ -12,6 +12,15 @@ import { PastelComponent } from './graficos/pastel/pastel.component';
 import { BarraComponent } from './graficos/barra/barra.component';
 import { DonaComponent } from './graficos/dona/dona.component';
 
+
+// Datepcker
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+import { BsDatepickerModule } from 'ngx-bootstrap/datepicker';
+import { defineLocale } from 'ngx-bootstrap/chronos';
+import { esLocale } from 'ngx-bootstrap/locale';
+defineLocale('es', esLocale);
+
+
 @NgModule({
   declarations: [
     AppComponent,
@@ -26,7 +35,9 @@ import { DonaComponent } from './graficos/dona/dona.component';
   ],
   imports: [
     BrowserModule,
-    AppRoutingModule
+    AppRoutingModule,
+    BrowserAnimationsModule,
+    BsDatepickerModule.forRoot()
   ],
   providers: [],
   bootstrap: [AppComponent]
