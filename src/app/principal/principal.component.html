@@ -53,4 +53,14 @@
   </form>
 </div>
 
-<canvas class="my-4 w-100" id="myChart" width="900" height="380"></canvas>
+<div class="chart-wrapper">
+  <canvas baseChart
+[datasets]="lineChartData"
+[labels]="lineChartLabels"
+[options]="lineChartOptions"
+[colors]="lineChartColors"
+[legend]="lineChartLegend"
+[chartType]="lineChartType"
+[plugins]="lineChartPlugins">
+</canvas>
+</div>

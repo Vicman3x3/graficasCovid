@@ -1,1 +1,29 @@
-<p>pastel works!</p>
+<div>
+  <div class="card">
+    <div class="card-header">
+      <!-- Paises -->
+
+      <div class="input-group">
+        <div class="input-group-prepend">
+          <div class="input-group-text">
+            <i class="fas fa-globe-americas"></i>
+          </div>
+        </div>
+        <select class="form-control">
+          <option value="">Opción A</option>
+          <option value="">Opción A</option>
+          <option value="">Opción A</option>
+          <option value="">Opción A</option>
+          <option value="">Opción A</option>
+        </select>
+      </div>
+    </div>
+    <div class="card-body">
+      <canvas baseChart [data]="pieChartData" [labels]="pieChartLabels" [chartType]="pieChartType" [options]="pieChartOptions"
+      [plugins]="pieChartPlugins" [legend]="pieChartLegend">
+    </canvas>
+
+    </div>
+  </div>
+</div>
+
