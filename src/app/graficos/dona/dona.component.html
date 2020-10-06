@@ -1,29 +1,61 @@
 <div>
   <div class="card">
     <div class="card-header">
-      <!-- Paises -->
+      <div class="form-row d-flex justify-content-between">
+        <div class="col-md-6">
+          <!-- Paises -->
 
-      <div class="input-group">
-        <div class="input-group-prepend">
-          <div class="input-group-text">
-            <i class="fas fa-globe-americas"></i>
+          <div class="input-group">
+            <div class="input-group-prepend">
+              <div class="input-group-text">
+                <i class="fas fa-globe-americas"></i>
+              </div>
+            </div>
+            <select class="form-control" name="country1" [(ngModel)]="country1" (change)= "loadData($event)">
+              <option value="" [ngValue]="null" selected>
+  Elige primer Pais
+              </option>
+              <option *ngFor="let country of countries" [ngValue]="country">
+  {{country}}
+              </option>
+            </select>
           </div>
         </div>
-        <select class="form-control">
-          <option value="">Opción A</option>
-          <option value="">Opción A</option>
-          <option value="">Opción A</option>
-          <option value="">Opción A</option>
-          <option value="">Opción A</option>
-        </select>
+        <div class="col-md-6">
+          <!-- Paises -->
+
+          <div class="input-group">
+            <div class="input-group-prepend">
+              <div class="input-group-text">
+                <i class="fas fa-globe-americas"></i>
+              </div>
+            </div>
+
+            <select class="form-control" name="country2" [(ngModel)]="country2" (change)= "loadData($event)">
+              <option value="" [ngValue]="null" selected>
+  Elige Segundo Pais
+              </option>
+              <option *ngFor="let country of countries" [ngValue]="country">
+  {{country}}
+              </option>
+            </select>
+
+          </div>
+        </div>
       </div>
     </div>
     <div class="card-body">
-      <canvas baseChart [data]="doughnutChartData" [labels]="doughnutChartLabels" [chartType]="doughnutChartType" [options]="doughnutChartOptions"
-      [plugins]="doughnutChartPlugins" [legend]="doughnutChartLegend">
-    </canvas>
-
+      <canvas
+        baseChart
+        [data]="doughnutChartData"
+        [labels]="doughnutChartLabels"
+        [chartType]="doughnutChartType"
+        [options]="doughnutChartOptions"
+        [plugins]="doughnutChartPlugins"
+        [legend]="doughnutChartLegend"
+        [colors] = "doughnutChartColors"
+      >
+      </canvas>
     </div>
   </div>
 </div>
-
